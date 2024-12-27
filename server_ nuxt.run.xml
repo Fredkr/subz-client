@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="server: nuxt" type="NodeJSConfigurationType" application-parameters="dev" path-to-js-file="node_modules/.pnpm/nuxt@3.15.0_@types+node@20.11.30_eslint@9.17.0_typescript@5.6.3_vite@6.0.5/node_modules/nuxt/bin/nuxt.mjs" working-dir="$PROJECT_DIR$">
+    <EXTENSION ID="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.NodeRunConfiguration">
+      <option name="DIRENV_ENABLED" value="false" />
+      <option name="DIRENV_TRUSTED" value="false" />
+    </EXTENSION>
+    <method v="2" />
+  </configuration>
+</component>

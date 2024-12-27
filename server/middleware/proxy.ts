@@ -1,32 +1,30 @@
 export default defineEventHandler(async (event) => {
-  const { req, res } = event;
-  const backendBase = useRuntimeConfig().public.apiBase;
+  const backendBase = process.env.BACKEND_URL || "http://localhost:8080";
+  if (event.req.url?.startsWith("/auth")) {
+    try {
+      const url = `${backendBase}${event.req.url}`;
+      const headers = new Headers(event.req.headers as Record<string, string>);
 
-  if (req.url?.startsWith("/auth/login")) {
-    console.log(`Proxying request to: ${backendBase}${req.url}`);
+      const response = await fetch(url, {
+        method: event.req.method,
+        headers,
+        body:
+          event.req.method !== "GET" && event.req.method !== "HEAD"
+            ? await readBody(event)
+            : undefined,
+        redirect: "manual",
+      });
 
-    const backendResponse = await fetch(`${backendBase}${req.url}`, {
-      method: req.method,
-      headers: req.headers as any,
-      body:
-        req.method !== "GET" && req.method !== "HEAD"
-          ? await readBody(event)
-          : undefined,
-      redirect: "manual",
-    });
+      event.res.statusCode = response.status;
+      response.headers.forEach((value, key) => {
+        event.res.setHeader(key, value);
+      });
 
-    res.statusCode = backendResponse.status;
-    backendResponse.headers.forEach((value, name) => {
-      res.setHeader(name, value);
-    });
-
-    if (backendResponse.status !== 302) {
-      const data = await backendResponse.text();
-      res.end(data);
-    } else {
-      res.end();
+      event.res.end(await response.text());
+    } catch (error) {
+      console.error("Proxy Error:", error);
+      event.res.statusCode = 500;
+      event.res.end("Something went wrong");
     }
-
-    return;
   }
 });
