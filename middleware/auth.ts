@@ -1,3 +1,5 @@
+import { redirectToLogin } from "~/utils/auth";
+
 export default defineNuxtRouteMiddleware(async (to) => {
   const headers = useRequestHeaders(); // Access headers
   const host = headers.host;
@@ -6,8 +8,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   const token = useCookie("authToken");
   if (!token.value) {
-    return navigateTo(
-      `/auth/google/login?redirect=${encodeURIComponent(fullUrl)}`,
-    );
+    return redirectToLogin(fullUrl);
   }
 });

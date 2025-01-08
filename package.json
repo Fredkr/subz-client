@@ -12,12 +12,14 @@
   },
   "dependencies": {
     "@nuxt/eslint": "0.7.4",
+    "jwt-decode": "^4.0.0",
     "nuxt": "^3.14.1592",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.7.4",
+    "@nuxt/types": "^2.18.1",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@types/node": "^20.11.30",
     "autoprefixer": "^10.4.20",
