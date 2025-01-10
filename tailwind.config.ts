@@ -17,6 +17,7 @@ export default <Partial<Config>>{
         mainLight: "var(--main-light)",
         border: "var(--color-border)",
         text: "var(--color-text)",
+        textHighlight: "var(--color-text-highlight)",
       },
     },
   },

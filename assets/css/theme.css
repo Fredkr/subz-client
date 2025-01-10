@@ -6,9 +6,10 @@
     --main-dark: #251823;
     --color-border: #45415c;
     --color-text: #D4CDD8FF;
+    --color-text-highlight: #f7d336;
 
     /*Sizing*/
     --content-width: 1300px;
-    --header-height: 80px;
+    --header-height: 60px;
 
 }
