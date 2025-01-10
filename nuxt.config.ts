@@ -11,7 +11,11 @@ export default defineNuxtConfig({
     authSecret: process.env.NUXT_API_SECRET,
     authOrigin: process.env.NUXT_API_ORIGIN,
   },
-  css: ["~/assets/css/tailwind.css", "~/assets/css/theme.css"],
+  css: [
+    "~/assets/css/tailwind.css",
+    "~/assets/css/theme.css",
+    "~/assets/css/main.css",
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},

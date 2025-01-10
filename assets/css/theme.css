@@ -1,5 +1,14 @@
 :root {
-    --main: #493545;
-    --main-light: #f5f5f5;
-    --main-dark: #333;
+    /*Colors*/
+
+    --main: #2c2837;
+    --main-light: #45415c;
+    --main-dark: #251823;
+    --color-border: #45415c;
+    --color-text: #D4CDD8FF;
+
+    /*Sizing*/
+    --content-width: 1300px;
+    --header-height: 80px;
+
 }

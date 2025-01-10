@@ -1,0 +1,13 @@
+@import "tab.css";
+
+html {
+    @apply bg-main h-full text-text
+}
+
+body {
+    @apply flex h-full w-full
+}
+
+#__nuxt {
+    @apply flex-1 h-full w-full
+}

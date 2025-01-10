@@ -15,6 +15,8 @@ export default <Partial<Config>>{
         main: "var(--main)",
         mainDark: "var(--main-dark)",
         mainLight: "var(--main-light)",
+        border: "var(--color-border)",
+        text: "var(--color-text)",
       },
     },
   },
