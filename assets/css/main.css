@@ -1,7 +1,9 @@
 @import "tab.css";
+@import "link.css";
 
 html {
-    @apply bg-main h-full text-text
+    @apply bg-main h-full text-text;
+    font-family: 'Figtree', serif;
 }
 
 body {

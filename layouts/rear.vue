@@ -4,7 +4,7 @@
 
     <AsideLayout aside-class="bg-mainDark h-full" layout-class="flex-1">
       <template #aside>
-        <SidebarMenu :nav="navigation" />
+        <SidebarNavigation :nav="navigation" nav-class="ps-5 py-5" />
       </template>
 
       <template #content>
@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import Header from "~/components/Header/Header.vue";
-import SidebarMenu from "~/components/SidebarMenu/SidebarMenu.vue";
+import SidebarNavigation from "~/components/SidebarMenu/SidebarNavigation.vue";
 const navigation = [
   { label: "test", path: "/rear/test" },
   {

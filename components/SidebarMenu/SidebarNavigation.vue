@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "radix-vue";
+import { ChevronDownIcon } from "@heroicons/vue/24/solid";
 export interface NavItem {
   label: string;
   path: string;
@@ -12,33 +13,41 @@ export interface NavItem {
 }
 interface Props {
   nav: NavItem[];
+  navClass?: string;
 }
 
 defineProps<Props>();
-import { ChevronDownIcon } from "@heroicons/vue/24/solid";
+
+const route = useRoute();
+const path = route.path.split("/")[2];
 </script>
 
 <template>
-  <nav aria-label="Sidebar Navigation" class="p-3 flex-1 w-full">
-    <AccordionRoot type="multiple" collapsible class="space-y-2">
+  <nav aria-label="Sidebar Navigation" :class="cn('flex-1 w-full', navClass)">
+    <AccordionRoot
+      type="multiple"
+      collapsible
+      class="space-y-2"
+      :default-value="[path]"
+    >
       <template v-for="item in nav" :key="item.path">
         <template v-if="!item.sub">
-          <a :href="item.path" class="menu-item">
+          <a :href="item.path" class="link">
             {{ item.label }}
           </a>
         </template>
 
         <template v-if="item.sub">
-          <AccordionItem :value="item.label" class="flex-1">
+          <AccordionItem :value="item.label.toLocaleLowerCase()" class="flex-1">
             <AccordionTrigger
-              class="menu-item flex-1 items-center justify-between"
+              class="link flex w-full flex-1 items-center justify-between data-[state=open]:text-textHighlight"
             >
               <span>{{ item.label }}</span>
               <ChevronDownIcon class="size-5" />
             </AccordionTrigger>
             <AccordionContent class="p-3 flex flex-col space-y-3 w-full">
               <template v-for="sub in item.sub" :key="sub.path">
-                <a :href="sub.path" class="menu-item">
+                <a :href="sub.path" class="link">
                   {{ sub.label }}
                 </a>
               </template>
@@ -53,8 +62,5 @@ import { ChevronDownIcon } from "@heroicons/vue/24/solid";
 <style scoped>
 .accordion-content {
   @apply bg-mainDark px-4 py-2 whitespace-nowrap;
-}
-.menu-item {
-  @apply bg-mainDark px-4 py-2 whitespace-nowrap hover:bg-main flex flex-1 rounded-md w-full;
 }
 </style>

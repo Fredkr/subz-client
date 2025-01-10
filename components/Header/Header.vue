@@ -9,7 +9,11 @@
     </template>
 
     <template #content>
-      <div class="border-b-2 border-mainDark h-full p-5"></div>
+      <div
+        class="border-b-2 border-mainDark h-full p-5 flex justify-end items-end"
+      >
+        <HeaderNav />
+      </div>
     </template>
   </AsideLayout>
 </template>
