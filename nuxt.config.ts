@@ -2,7 +2,7 @@ import { defineNuxtConfig } from "nuxt/config";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/eslint"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/eslint", "@nuxt/fonts"],
 
   runtimeConfig: {
     public: {
