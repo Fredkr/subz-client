@@ -10,8 +10,9 @@
 
     <template #content>
       <div
-        class="border-b-2 border-mainDark h-full p-5 flex justify-end items-end"
+        class="border-b-2 border-mainDark h-full p-5 flex justify-between items-center"
       >
+        <slot name="start" />
         <HeaderNav />
       </div>
     </template>
