@@ -6,9 +6,11 @@ import {
   AccordionContent,
 } from "radix-vue";
 import { ChevronDownIcon } from "@heroicons/vue/24/solid";
+import Link from "~/components/ExtendedLink.vue";
 export interface NavItem {
   label: string;
   path: string;
+  disabled?: boolean;
   sub?: NavItem[];
 }
 interface Props {
@@ -32,9 +34,9 @@ const path = route.path.split("/")[2];
     >
       <template v-for="item in nav" :key="item.path">
         <template v-if="!item.sub">
-          <a :href="item.path" class="link">
+          <Link :href="item.path" :disabled="item.disabled">
             {{ item.label }}
-          </a>
+          </Link>
         </template>
 
         <template v-if="item.sub">
@@ -47,9 +49,7 @@ const path = route.path.split("/")[2];
             </AccordionTrigger>
             <AccordionContent class="p-3 flex flex-col space-y-3 w-full">
               <template v-for="sub in item.sub" :key="sub.path">
-                <a :href="sub.path" class="link">
-                  {{ sub.label }}
-                </a>
+                <Link :href="sub.path"> {{ sub.label }} </Link>
               </template>
             </AccordionContent>
           </AccordionItem>

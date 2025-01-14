@@ -1,8 +1,8 @@
 <template>
   <NavigationMenuLink
     class="link data-[active]:text-textHighlight"
-    :href="{ href }"
-    :active="rootPath === 'rear'"
+    :href="href"
+    :active="active"
   >
     <slot />
   </NavigationMenuLink>
@@ -13,8 +13,9 @@ interface Props {
   href: string;
 }
 
-defineProps<Props>();
+const { href } = defineProps<Props>();
 
 const route = useRoute();
 const rootPath = route.path.split("/")[1];
+const active = href.endsWith(rootPath);
 </script>
