@@ -63,8 +63,8 @@ const handleOrgSelect = (org: Organisation) => {
 
   const currentPath = route.path;
   const newPath = currentPath.replace(
-    /\/admin\/\d+/, // Matches /admin/[number]
-    `/admin/${org.id}`,
+    /\/admin(?:\/\d+)?(\/.+)?/, // Matches /admin, /admin/[number], and preserves trailing paths
+    (match, trailingPath = "") => `/admin/${org.id}${trailingPath}`,
   );
 
   navigateTo(newPath);
