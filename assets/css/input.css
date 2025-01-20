@@ -1,0 +1,16 @@
+@tailwind components;
+
+@layer components {
+    .input {
+        @apply bg-background text-textPrimary border-black border-sm font-bold py-2 px-4 rounded-md min-w-[300px] relative;
+    }
+
+    .input.input:invalid {
+        @apply border-error ;
+    }
+
+    .input-error {
+        @apply absolute bottom-[2px] font-bold text-sm ps-2;
+    }
+
+}
