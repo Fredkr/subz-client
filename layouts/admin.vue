@@ -1,7 +1,7 @@
 <template>
-  <div class="h-full flex flex-col flex-1">
+  <div class="flex h-full flex-1 flex-col">
     <Header>
-      <template #start>
+      <template #org-select>
         <OrganisationSelect
           :key="organisation?.id"
           :organisations="organisations"
@@ -11,19 +11,24 @@
       </template>
     </Header>
 
-    <AsideLayout
-      aside-class="bg-mainDark h-full"
-      layout-class="flex-1"
-      content-class="py-5"
-    >
-      <template #aside>
-        <SidebarNavigation :nav="navigation" nav-class="ps-5 py-5" />
-      </template>
+    <div class="flex flex-1 gap-5 p-5">
+      <div class="relative space-y-5">
+        <div class="card relative z-20">
+          <OrganisationSelect
+            :key="organisation?.id"
+            :organisations="organisations"
+            :default-value="organisation"
+            trigger-class="w-full"
+            @select="handleOrgSelect"
+          />
+        </div>
 
-      <template #content>
+        <SidebarNavigation :nav="navigation" nav-class="h-fit z-10 relative" />
+      </div>
+      <div class="card-secondary flex-1">
         <slot />
-      </template>
-    </AsideLayout>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -61,11 +66,11 @@ if (organisations.value && organisations.value.length === 1) {
 const handleOrgSelect = (org: Organisation) => {
   select(org.id, org.name);
 
-  const currentPath = route.path;
-  const newPath = currentPath.replace(
-    /\/admin(?:\/\d+)?(\/.+)?/, // Matches /admin, /admin/[number], and preserves trailing paths
-    (match, trailingPath = "") => `/admin/${org.id}${trailingPath}`,
-  );
+  // Get everything after /admin/[number]
+  const trailingPath = route.path.replace(/^\/admin(?:\/\d+)?/, "");
+
+  // Construct the new path
+  const newPath = `/admin/${org.id}${trailingPath}`;
 
   navigateTo(newPath);
 };
@@ -74,6 +79,11 @@ const navigation = computed(() => [
   {
     label: "Schedule",
     path: `/admin/${orgId.value}/schedule`,
+    disabled: !orgId.value,
+  },
+  {
+    label: "Members",
+    path: `/admin/${orgId.value}/members`,
     disabled: !orgId.value,
   },
 ]);

@@ -1,8 +1,10 @@
-@import "tab.css";
-@import "link.css";
+@import "effects.css";
+@import "card.css";
+@import "button.css";
+@import "input.css";
 
 html {
-    @apply bg-main h-full text-text;
+    @apply bg-background h-full text-textPrimary;
     font-family: 'Figtree', serif;
 }
 

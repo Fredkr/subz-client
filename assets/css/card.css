@@ -1,0 +1,16 @@
+@tailwind components;
+
+@layer components {
+    .card {
+        @apply border-md border-black rounded-xl bg-cardPrimary p-5 drop-shadow-md;
+    }
+
+
+    .card-secondary {
+        @apply card bg-cardSecondary;
+    }
+
+    .card-sm {
+        @apply drop-shadow-sm;
+    }
+}

@@ -12,16 +12,28 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
-        main: "var(--main)",
-        mainDark: "var(--main-dark)",
-        mainLight: "var(--main-light)",
-        border: "var(--color-border)",
-        text: "var(--color-text)",
-        textHighlight: "var(--color-text-highlight)",
+        background: "var(--background-color)",
+        cardPrimary: "var(--card-primary-color)",
+        cardSecondary: "var(--card-secondary-color)",
+        actionPrimary: "var(--action-primary-color)",
+        shadowPrimary: "var(--shadow-primary-color)",
+        textPrimary: "var(--text-primary-color)",
+        error: "var(--error-color)",
+        warning: "var(--warning-color)",
+      },
+      textColor: {
+        actionPrimary: "var(--action-text-primary-color)",
+      },
+      dropShadow: {
+        sm: "4px 4px 0 rgba(0, 0, 0)",
+        md: "8px 8px 0 rgba(0, 0, 0)",
       },
       borderWidth: {
         1: "1px",
+        sm: "3px",
+        md: "4px",
       },
+
       fontSize: {
         "body-sm": ["0.75rem", { lineHeight: "1rem", fontWeight: 400 }],
         "body-md": ["0.875rem", { lineHeight: "1.25rem", fontWeight: 400 }],

@@ -1,12 +1,15 @@
 :root {
     /*Colors*/
 
-    --main: #2c2837;
-    --main-light: #45415c;
-    --main-dark: #251823;
-    --color-border: #45415c;
-    --color-text: #D4CDD8FF;
-    --color-text-highlight: #f7d336;
+    --background-color: #f1ecdf;
+    --card-primary-color: #e8c8ab;
+    --card-secondary-color: #DACDDFFF;
+    --action-primary-color: #d6995b;
+    --action-primary-text-color: #000;
+    --shadow-primary-color: #000000;
+    --text-primary-color: #000000;
+    --error-color: #f84040;
+    --warning-color: #ead14d;
 
     /*Sizing*/
     --content-width: 1300px;

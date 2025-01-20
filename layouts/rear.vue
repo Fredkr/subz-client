@@ -1,16 +1,13 @@
 <template>
-  <div class="h-full flex flex-col flex-1">
+  <div class="flex h-full flex-1 flex-col">
     <Header />
 
-    <AsideLayout aside-class="bg-mainDark h-full" layout-class="flex-1">
-      <template #aside>
-        <SidebarNavigation :nav="navigation" nav-class="ps-5 py-5" />
-      </template>
-
-      <template #content>
+    <div class="flex flex-1 gap-5 p-5">
+      <SidebarNavigation :nav="navigation" nav-class="ps-5 py-5" />
+      <div class="card flex-1">
         <slot />
-      </template>
-    </AsideLayout>
+      </div>
+    </div>
   </div>
 </template>
 

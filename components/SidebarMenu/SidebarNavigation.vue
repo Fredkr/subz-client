@@ -5,7 +5,8 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "radix-vue";
-import { ChevronDownIcon } from "@heroicons/vue/24/solid";
+import { PhCaretDown, PhArrowRight } from "@phosphor-icons/vue";
+
 import Link from "~/components/ExtendedLink.vue";
 export interface NavItem {
   label: string;
@@ -18,36 +19,55 @@ interface Props {
   navClass?: string;
 }
 
-defineProps<Props>();
+const { nav } = defineProps<Props>();
 
 const route = useRoute();
 const path = route.path.split("/")[2];
 </script>
 
 <template>
-  <nav aria-label="Sidebar Navigation" :class="cn('flex-1 w-full', navClass)">
+  <nav
+    aria-label="Sidebar Navigation"
+    :class="cn('card-secondary w-[400px]', navClass)"
+  >
     <AccordionRoot
       type="multiple"
       collapsible
-      class="space-y-2"
+      class="flex flex-col space-y-2"
       :default-value="[path]"
     >
       <template v-for="item in nav" :key="item.path">
         <template v-if="!item.sub">
-          <Link :href="item.path" :disabled="item.disabled">
+          <Link
+            :href="item.path"
+            :disabled="item.disabled"
+            :class="
+              cn('flex items-center gap-x-2', {
+                'font-bold': route.path === item.path,
+              })
+            "
+          >
+            <template v-if="route.path === item.path">
+              <PhArrowRight :size="16" weight="bold" />
+            </template>
             {{ item.label }}
           </Link>
         </template>
 
         <template v-if="item.sub">
-          <AccordionItem :value="item.label.toLocaleLowerCase()" class="flex-1">
+          <AccordionItem
+            :value="item.label.toLocaleLowerCase()"
+            class="relative flex-1"
+          >
             <AccordionTrigger
-              class="link flex w-full flex-1 items-center justify-between data-[state=open]:text-textHighlight"
+              class="btn data-[state=open]:text-textHighlight relative z-20 flex w-full flex-1 items-center justify-between"
             >
               <span>{{ item.label }}</span>
-              <ChevronDownIcon class="size-5" />
+              <PhCaretDown :size="32" weight="bold" />
             </AccordionTrigger>
-            <AccordionContent class="p-3 flex flex-col space-y-3 w-full">
+            <AccordionContent
+              class="data-[state=open]:card data-[state=open]:card-sm absolute -top-0 z-10 flex w-full flex-col space-y-3 p-3 !pt-12"
+            >
               <template v-for="sub in item.sub" :key="sub.path">
                 <Link :href="sub.path"> {{ sub.label }} </Link>
               </template>
@@ -61,6 +81,6 @@ const path = route.path.split("/")[2];
 
 <style scoped>
 .accordion-content {
-  @apply bg-mainDark px-4 py-2 whitespace-nowrap;
+  @apply whitespace-nowrap bg-cardPrimary px-4 py-2;
 }
 </style>

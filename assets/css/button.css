@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+    .btn {
+        @apply bg-actionPrimary text-actionPrimary border-black border-sm font-bold py-2 px-4 rounded-md hover:bounce hover:brightness-95;
+    }
+}

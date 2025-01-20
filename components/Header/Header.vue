@@ -1,20 +1,11 @@
 <template>
-  <AsideLayout
-    layout-class="min-h-[--header-height]"
-    aside-class="h-full"
-    content-class="h-full"
+  <div
+    class="border-b-md flex h-[var(--header-height)] items-center justify-between border-black px-5"
   >
-    <template #aside>
-      <div class="border-b-2 border-main h-full p-5">test</div>
-    </template>
-
-    <template #content>
-      <div
-        class="border-b-2 border-mainDark h-full p-5 flex justify-between items-center"
-      >
-        <slot name="start" />
-        <HeaderNav />
-      </div>
-    </template>
-  </AsideLayout>
+    <h1 class="text-3xl font-bold">Subz</h1>
+    <div class="flex items-center gap-x-5">
+      <HeaderNav />
+    </div>
+  </div>
 </template>
+<script setup lang="ts"></script>
