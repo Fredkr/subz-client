@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
+      baseUrl: process.env.BASE_URL || "http://localhost:3000", // Your base URL
       apiBase: process.env.BACKEND_URL || "http://localhost:8080", // Your backend URL
     },
     authSecret: process.env.NUXT_API_SECRET,

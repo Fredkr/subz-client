@@ -3,8 +3,10 @@ export const getCurrentUrl = () => {
 };
 
 export const redirectToLogin = (fullUrl: string) => {
-  navigateTo(
-    `http://localhost:8080/auth/login?redirect=${encodeURIComponent(fullUrl)}`,
-    { external: true },
-  );
+  return navigateTo({
+    path: "/login",
+    query: {
+      redirect: encodeURIComponent(fullUrl),
+    },
+  });
 };

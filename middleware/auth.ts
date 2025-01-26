@@ -8,6 +8,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   const token = useCookie("authToken");
   if (!token.value) {
-    return redirectToLogin(fullUrl);
+    return await redirectToLogin(fullUrl);
   }
 });
