@@ -6,6 +6,7 @@ export const useOrganisations = () => {
   return useQuery({ queryKey: ["organisation"], queryFn: getOrganisations });
 };
 
+
 export const useInviteOrganisationMember = () => {
   return useMutation({
     mutationFn: (member: InviteOrganisationMember) => inviteMember(member),

@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer components {
+    .pill {
+        @apply bg-cardSecondary text-actionPrimary border-black border-sm font-bold py-1 px-2 rounded-md hover:bounce hover:brightness-95;
+    }
+}
