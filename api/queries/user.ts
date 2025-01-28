@@ -30,7 +30,7 @@ export const loginUserSchema = z.object({
 export type LoginUser = z.infer<typeof loginUserSchema>;
 export const loginUser = async ({ email, password }: LoginUser) => {
   return wretch("http://localhost:8080/auth/login/email")
-    .options({ credentials: "include" })
+    .options({ credentials: "include", mode: "cors" })
     .post({
       email,
       password,
